@@ -57,7 +57,7 @@ class DynamicLinkController {
       }), // Uri(scheme: "https", host:"eshannimesha.com", queryParameters : {'productId' : productId} ),
       uriPrefix: "https://shopappdl.page.link",
       //navigationInfoParameters: NavigationInfoParameters(),
-      androidParameters:  const AndroidParameters(packageName: "com.example.app.android"),
+      androidParameters:  const AndroidParameters(packageName: "com.example.shop_app"),
       iosParameters: const IOSParameters(bundleId: "com.example.app.ios"),
       socialMetaTagParameters: SocialMetaTagParameters(
         description: product.description,
