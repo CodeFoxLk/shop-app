@@ -26,12 +26,12 @@ class HomeScreen extends GetView<ProductController> {
           return ListView.separated(
               padding: themeData.uiParameters.screenPadding,
               itemBuilder: (_, index) => ProductListTile(
-                    onShare: () {},
+                    onShare: () {
+                      controller.createSharableLink(product: controller.products[index]);
+                    },
                     product: controller.products[index],
                     onTap: () {
-                       controller.createSharableLink(product: controller.products[index]);
-                      // controller.navigateToProductScreen(
-                      //     productId: controller.products[index].id.toString());
+                      controller.navigateToProductScreen(productId: controller.products[index].id.toString());
                     },
                   ),
               separatorBuilder: (_, index) => const SizedBox(height: 10),

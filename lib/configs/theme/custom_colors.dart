@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/configs/theme/ui_parameters.dart';
 
 class AppColors extends ThemeExtension<AppColors> {
   final Color favouritButtonColor;
@@ -27,7 +26,7 @@ class AppColors extends ThemeExtension<AppColors> {
 
   static ThemeExtension<AppColors> getStyle([bool isDarkMode = false]){
     final colors = AppColors(favouritButtonColor: const Color.fromARGB(255, 200, 44, 33), cartButtonColors: Colors.blue, unSelectedColor: Colors.blueGrey);
-    final darkThemeColors = colors.copyWith();
+    final darkThemeColors = colors.copyWith( unSelectedColor: const Color.fromARGB(255, 174, 194, 205));
     return isDarkMode ? darkThemeColors : colors;
   }
 }

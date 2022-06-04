@@ -12,7 +12,13 @@ class ProductScreen extends GetView<ProductController> {
   Widget build(BuildContext context) {
     final themeData = CustomThemeExtension(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+           IconButton(onPressed: (){
+            controller.createSharableLink(product: controller.product);
+          }, icon: Icon(Icons.share, color: themeData.appColors.unSelectedColor,)),
+        ],
+      ),
       body: Obx(() {
         if (controller.isProductLoading.value) {
           return const Loading();

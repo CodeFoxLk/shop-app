@@ -30,26 +30,29 @@ class DynamicLinkController {
     if (link != null) {
       final Uri deepLink = link.link;
       final params = deepLink.queryParameters;
-
+ 
       try {
-        // if app is back ground running and there is already created [ProductController], then onReady is not calling as newly created controller, should call it like this
-        // if product contrroller not available. it will be trow and error
+       // if app is back ground running and there is already created [ProductController], then onReady is not calling as newly created controller, should call it like this
+       // so fetchSingleProduct() might not work. then we needs to call fetchSingleProduct() manually
+       // if product contrroller not available. it will be trow and error
         ProductController controller = Get.find<ProductController>();
         controller.navigateToProductScreen(productId: params['productId']!);
         return;
-      } on Exception catch (e) {
+        
+      } catch (e) {
         logger.e(e);
       }
 
-      // if there is not product controller available, the navigation method will be call from onReady() in the product controller
+      // if there is not product controller available, the navigation method will be call from onReady() in the product controller.
+      // since controller is just creating by below navigation. -> check AppRoutes class 
       // usefull if app is in forground
       Get.toNamed(ProductScreen.routeName, parameters: {'productId' : params['productId']! });
     }
   }
 
-  static Future<ShortDynamicLink > create(Product product) async {
+  static Future<ShortDynamicLink> create(Product product) async {
     final dynamicLinkParams = DynamicLinkParameters(
-      link: Uri.https('eshannimesha.com', '/product', {
+      link: Uri.https('github.com', '/CodeFoxLk', {
         'productId': product.id.toString()
       }), // Uri(scheme: "https", host:"eshannimesha.com", queryParameters : {'productId' : productId} ),
       uriPrefix: "https://shopappdl.page.link",

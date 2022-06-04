@@ -7,9 +7,9 @@ import 'package:shop_app/configs/theme/custom_theme_data.dart';
 import 'package:shop_app/configs/theme/ui_parameters.dart';
 import 'package:shop_app/controllers/dynamiclink_controller.dart';
 import 'package:shop_app/routes/routes.dart';
-import 'package:shop_app/screens/home_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:shop_app/screens/home_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {

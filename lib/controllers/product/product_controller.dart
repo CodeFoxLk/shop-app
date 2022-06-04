@@ -63,7 +63,8 @@ class ProductController extends GetxController {
     }
   }
 
-  void createSharableLink({required Product product}) async{
+  void createSharableLink({required Product? product}) async{
+     if(product == null) return;
      final link = await DynamicLinkController.create(product);
      logger.i(link.shortUrl);
   }

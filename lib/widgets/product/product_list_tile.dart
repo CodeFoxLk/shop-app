@@ -77,7 +77,9 @@ class ProductListTile extends StatelessWidget {
                           price: '\$${product.price.toString()}' ,
                         ),
                         const Spacer(),
-                        const ProductListTileActions()
+                         ProductListTileActions(
+                          onShare: onShare,
+                        )
                       ],
                     ),
                   ],
