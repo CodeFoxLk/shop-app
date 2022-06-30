@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/configs/theme/ui_parameters.dart';
 
 class CustomTextStyles extends ThemeExtension<CustomTextStyles> {
   final TextStyle titleTextStyle;

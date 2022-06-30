@@ -18,15 +18,18 @@ class DynamicLinkController {
     return initialLink;
   }
 
+  // listen to dynamic links executions in background of the app
   static void listen() {
     FirebaseDynamicLinks.instance.onLink.listen((dynamicLinkData) {
       navigationHandler(link: dynamicLinkData);
+      logger.i(dynamicLinkData.link);
     }).onError((error) {
       logger.e(error);
     });
   }
 
   static navigationHandler({PendingDynamicLinkData? link}) {
+    //logger.wtf(link);
     if (link != null) {
       final Uri deepLink = link.link;
       final params = deepLink.queryParameters;

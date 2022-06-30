@@ -36,9 +36,10 @@ class ProductController extends GetxController {
     isProductLoading.value = true;
     Dio dio = Dio();
     try {
-      final response = await dio.get(productUrl(productId),
-      options: Options(responseType: ResponseType.json));
-      _selectedProduct.value = Product.fromJson(response.data);
+      final response = await dio.get(productUrl(productId), options: Options(responseType: ResponseType.json));
+      if(response.statusCode == 200){
+        _selectedProduct.value = Product.fromJson(response.data);
+      }
       isProductLoading.value = false;
     } on DioError catch (e) {
       logger.e(e);
@@ -51,11 +52,11 @@ class ProductController extends GetxController {
     isProductsLoading.value = true;
     Dio dio = Dio();
     try {
-      final response = await dio.get(productsUrl,
-          options: Options(responseType: ResponseType.json));
-      final products = productsFromJson(response.data);
-
-      _products.assignAll(products);
+      final response = await dio.get(productsUrl,  options: Options(responseType: ResponseType.json));
+      if(response.statusCode == 200){
+        final products = productsFromJson(response.data);
+        _products.assignAll(products);
+      }
       isProductsLoading.value = false;
     } on DioError catch (e) {
       logger.e(e);
